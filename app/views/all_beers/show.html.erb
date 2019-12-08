@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @all_beer.name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @all_beer.city %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @all_beer.address %>
+</p>
+
+<p>
+  <strong>Categories:</strong>
+  <%= @all_beer.categories %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @all_beer.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @all_beer.longitude %>
+</p>
+
+<p>
+  <strong>Postalcode:</strong>
+  <%= @all_beer.postalCode %>
+</p>
+
+<p>
+  <strong>Province:</strong>
+  <%= @all_beer.province %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @all_beer.twitter %>
+</p>
+
+<p>
+  <strong>Websites:</strong>
+  <%= @all_beer.websites %>
+</p>
+
+<%= link_to 'Edit', edit_all_beer_path(@all_beer) %> |
+<%= link_to 'Back', all_beers_path %>

@@ -1,0 +1,2 @@
+class AllBeer < ApplicationRecord
+end
