@@ -5,6 +5,22 @@ class AllBeersController < ApplicationController
   # GET /all_beers.json
   def index
     @all_beers = AllBeer.all
+    @all_categories = []
+    @amount = []
+    @all_beers.each do | all_beer |
+        if not @all_categories.include?(all_beer.categories)
+        @all_categories <<all_beer.categories
+      end
+    end
+    @all_beers = AllBeer.group(:categories).count
+    @all_beers.each do |group|
+      @amount<<group[1]
+      @amount<<group[1]
+    end
+
+    puts @all_categories
+    puts @amount
+    @all_beers = AllBeer.all
   end
 
   # GET /all_beers/1
