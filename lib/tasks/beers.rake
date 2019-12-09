@@ -4,7 +4,9 @@ namespace :beers do
   task seed_beers: :environment do
 
     AllBeer.destroy_all
+    BrewedBeer.destroy_all
 
+    #All breweries
     CSV.foreach("lib/assets/new_beer.csv", :headers=>true) do | row |
       puts row.inspect
 
@@ -20,7 +22,9 @@ namespace :beers do
       twitter: row[13],
       websites: row[14]
       )
-    end
+      end
+
+
   end
 
 end

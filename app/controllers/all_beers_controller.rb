@@ -1,6 +1,6 @@
 class AllBeersController < ApplicationController
   before_action :set_all_beer, only: [:show, :edit, :update, :destroy]
-
+  rescue_from ActiveRecord::RecordNotFound, with: :redirect_if_not_found
   # GET /all_beers
   # GET /all_beers.json
   def index
@@ -21,6 +21,7 @@ class AllBeersController < ApplicationController
     puts @all_categories
     puts @amount
     @all_beers = AllBeer.all
+    @all_beers = AllBeer.search(params[:term])
   end
 
   # GET /all_beers/1
@@ -85,6 +86,6 @@ class AllBeersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def all_beer_params
-      params.require(:all_beer).permit(:name, :city, :address, :categories, :latitude, :longitude, :postalCode, :province, :twitter, :websites)
+      params.require(:all_beer).permit(:name, :city, :address, :categories, :latitude, :longitude, :postalCode, :province, :twitter, :websites, :term)
     end
 end
