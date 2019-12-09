@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :addresses
+  resources :customers
+  resources :brewed_beers
   resources :all_beers
   get 'beer/index'
   root 'beer#index'

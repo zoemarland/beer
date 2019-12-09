@@ -4,6 +4,11 @@
 
  <div id="container" style="width:100%;height:800px;"></div>
 
+ <%= form_tag(all_beers_path, method: :get) do %>
+<%= text_field_tag :term, params[:term] %>
+<%= submit_tag 'Search' %>
+<% end %>
+
  <script type="text/javascript">
  $(function () {
  var myChart = Highcharts.chart('container',{

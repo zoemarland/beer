@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_175620) do
+ActiveRecord::Schema.define(version: 2019_12_09_191441) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "postcode"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_addresses_on_customer_id"
+  end
 
   create_table "all_beers", force: :cascade do |t|
     t.string "name"
@@ -27,16 +37,22 @@ ActiveRecord::Schema.define(version: 2019_12_08_175620) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reservations", force: :cascade do |t|
-    t.integer "beer_id"
-    t.integer "customer_id"
-    t.integer "amount_of_people"
-    t.date "date"
-    t.time "time"
+  create_table "brewed_beers", force: :cascade do |t|
+    t.string "name"
+    t.string "brand"
+    t.string "style"
+    t.integer "all_beer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["beer_id"], name: "index_reservations_on_beer_id"
-    t.index ["customer_id"], name: "index_reservations_on_customer_id"
+    t.index ["all_beer_id"], name: "index_brewed_beers_on_all_beer_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "last_name"
+    t.string "first_name"
+    t.string "email_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
