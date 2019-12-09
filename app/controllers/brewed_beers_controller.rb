@@ -15,7 +15,6 @@ class BrewedBeersController < ApplicationController
   # GET /brewed_beers/new
   def new
     @brewed_beer = BrewedBeer.new
-    @all_beers = AllBeer.all
   end
 
   # GET /brewed_beers/1/edit
