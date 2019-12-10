@@ -1,6 +1,7 @@
 class AllBeersController < ApplicationController
   before_action :set_all_beer, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :redirect_if_not_found
+
   # GET /all_beers
   # GET /all_beers.json
   def index

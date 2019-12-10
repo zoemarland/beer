@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @reservation.customer.last_name %>
+</p>
+
+<p>
+  <strong>All beer:</strong>
+  <%= @reservation.all_beer.name %>
+</p>
+
+
+<h4>These beers are included in this reservation:</h4>
+<% @reservation.brewed_beers.each do |brewed_beer|%>
+<p> <%= brewed_beer.name %> brewed by <%= all_beer.name %>
+</p> <%end%>
+
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>
