@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_191441) do
+ActiveRecord::Schema.define(version: 2019_12_10_135205) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "street"
@@ -47,12 +47,35 @@ ActiveRecord::Schema.define(version: 2019_12_09_191441) do
     t.index ["all_beer_id"], name: "index_brewed_beers_on_all_beer_id"
   end
 
+  create_table "brewed_beers_reservations", id: false, force: :cascade do |t|
+    t.integer "brewed_beer_id", null: false
+    t.integer "reservation_id", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
     t.string "email_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "all_beer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["all_beer_id"], name: "index_reservations_on_all_beer_id"
+    t.index ["customer_id"], name: "index_reservations_on_customer_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
