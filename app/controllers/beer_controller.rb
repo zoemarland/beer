@@ -11,6 +11,6 @@ def load_brewery
      marker.lng plot.longitude
 
      marker.infowindow render_to_string(:partial => "/beer/info",
-       :locals => {:name => plot.name })
+       :locals => {:name => plot.name, :city => plot.city })
   end
 end
