@@ -18,8 +18,8 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   def new
     @reservation = Reservation.new
-    @all_beers = AllBeer.find(params[:all_beer_id])
-    @customers = Customer.all
+    @all_beer = AllBeer.find(params[:all_beer_id])
+    @customer = Customer.all
   end
 
   # GET /reservations/1/edit
