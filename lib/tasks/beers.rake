@@ -3,10 +3,11 @@ namespace :beers do
   desc "TODO"
   task seed_beers: :environment do
 
-    AllBeer.destroy_all
-    BrewedBeer.destroy_all
-    Address.destroy_all
-    Customer.destroy_all
+    #Reservation.destroy_all
+    #AllBeer.destroy_all
+    #BrewedBeer.destroy_all
+    #Address.destroy_all
+    #Customer.destroy_all
 
     #All breweries
     CSV.foreach("lib/assets/new_beer.csv", :headers=>true) do | row |
@@ -37,27 +38,30 @@ namespace :beers do
       p "beers created"
 
       #create Customers
-    20.times do |index|
-      Customer.create!(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        email_address: Faker::Internet.email
-      )
-    end
-    p "customers created"
+      20.times do |index|
+        Customer.create!(
+          first_name: Faker::Name.first_name,
+          last_name: Faker::Name.last_name,
+          email_address: Faker::Internet.email
+        )
+      end
+      p "customers created"
 
-    #Address for each customer
-    customers = Customer.all
-    customers.each do | customer |
-      Address.create!(
-        street: Faker::Address.street_address,
-        city: Faker::Address.city,
-        postcode: Faker::Address.postcode,
-        customer_id: customer.id
-      )
-    end
-    p "Addresses created"
-
+      #Address for each customer
+      customers = Customer.all
+      customers.each do | customer |
+        Address.create!(
+          street: Faker::Address.street_address,
+          city: Faker::Address.city,
+          postcode: Faker::Address.postcode,
+          customer_id: customer.id
+        )
+        #Reservation.create!(
+        #  customer_id: customer.id,
+        #  all_beer_id: all_beer.id
+        #)
+      end
+      p "Addresses created"
 
 
   end

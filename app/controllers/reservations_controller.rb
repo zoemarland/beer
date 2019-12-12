@@ -11,28 +11,29 @@ class ReservationsController < ApplicationController
   # GET /reservations/1
   # GET /reservations/1.json
   def show
-    #@all_beers = AllBeer.all
-    #@customers = Customer.all
+    @all_beers = AllBeer.all
+    @customers = Customer.all
   end
 
   # GET /reservations/new
   def new
     @reservation = Reservation.new
     #@all_beers = AllBeer.all
-    @all_beer = AllBeer.find(params[:all_beer_id])
     @customer = Customer.all
+    @all_beer = AllBeer.find(params[:all_beer_id])
   end
 
   # GET /reservations/1/edit
   def edit
+    @all_beers = AllBeer.all
+    @customer = Customer.all
   end
 
   # POST /reservations
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-    #@reservation.all_beer_id = AllBeer.find(params[:all_beer_id])
-
+  
     respond_to do |format|
       if @reservation.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }

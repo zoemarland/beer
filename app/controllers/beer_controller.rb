@@ -1,7 +1,8 @@
 class BeerController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :redirect_if_not_found
+
   def index
     load_brewery
-    @all_beers = AllBeer.all
   end
 end
 
@@ -11,6 +12,6 @@ def load_brewery
      marker.lng plot.longitude
 
      marker.infowindow render_to_string(:partial => "/beer/info",
-       :locals => {:name => plot.name, :city => plot.city })
+       :locals => {:name => plot.name, :city => plot.city, :id => plot.id })
   end
 end

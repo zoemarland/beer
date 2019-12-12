@@ -6,14 +6,14 @@
 </p>
 
 <p>
-  <strong>All beer:</strong>
+  <strong>Brewery:</strong>
   <%= @reservation.all_beer.name %>
 </p>
 
 
 <h4>These beers are included in this reservation:</h4>
 <% @reservation.brewed_beers.each do |brewed_beer|%>
-<p> <%= brewed_beer.name %> brewed by <%= all_beer.name %>
+<p> <%= brewed_beer.name %> brewed by <%= brewed_beer.brand %>
 </p> <%end%>
 
 
