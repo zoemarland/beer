@@ -1,3 +1,4 @@
 <b>Brewery:</b> <%= name %></br>
 <b>City:</b> <%= city %></br>
+<p><%= link_to 'More informations', all_beer_url(id) %><p>
 <p><%= link_to 'Add a Reservation',new_reservation_path(:all_beer_id => id) %><p>
